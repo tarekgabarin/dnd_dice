@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import 'bulma/css/bulma.min.css'
+import './assets/css/tailwind.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
