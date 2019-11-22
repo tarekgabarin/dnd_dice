@@ -33,14 +33,49 @@ export default function DiceRoll() {
 
     }
 
-    // function returnTypesOfDices() {
-    //     const diceTypesListJSX =
-    // }
+    function setDiceType(event) {
+        const newDiceType = event.target.value;
+        setState({
+            ...state,
+            currentDiceType: newDiceType,
+            diceResult: undefined
+        })
+    }
+
+    function returnTypesOfDices() {
+        return state.diceTypes.map(function (item, index) {
+            return (
+                <div key={index} className="column">
+                    <button onClick={setDiceType} value={item} className="button">{item}</button>
+                </div>
+            )
+        })
+    }
 
 
     return (
-        <section>
-            <h1>Testing</h1>
+        <section className={'container'}>
+            <h1>Choose A Dice Type</h1>
+
+            <div className="columns">
+                {returnTypesOfDices()}
+            </div>
+
+            <div className="columns">
+                <div className="column">
+                    <h1>{state.diceResult}</h1>
+                </div>
+            </div>
+
+            <div className="columns">
+                <div className="column">
+                    <button onClick={rollDice} className="button">
+                        Roll
+                    </button>
+                </div>
+            </div>
+
+
         </section>
     )
 
