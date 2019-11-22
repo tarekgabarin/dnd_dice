@@ -45,7 +45,7 @@ export default function DiceRoll() {
 
         const amountToRoll = state.dicesRef[state.currentDiceType].value;
 
-        const result = Math.floor(Math.random() * amountToRoll);
+        const result = Math.floor(Math.random() * amountToRoll) + state.modifier;
 
         setState(
             {
@@ -62,6 +62,14 @@ export default function DiceRoll() {
             ...state,
             currentDiceType: dice,
             diceResult: undefined
+        })
+    }
+
+    function setModifier(event) {
+        const modifier = event.target.value;
+        setState({
+            ...state,
+            modifier
         })
     }
 
@@ -105,8 +113,28 @@ export default function DiceRoll() {
                 </div>
 
                 <div className="flex flex-row m-2 justify-center">
+
+                    <div className="inline-flex">
+                        <div className={'mx-1'}>Modifier</div>
+                        <div>
+                            <input onChange={setModifier}  type="number" name="quantity" min="-150" max="150" />
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div className="flex flex-row m-2 justify-center">
                     <div className={'p-10 border-2 border-black'}>
                         <h1 className={"text-2xl"}>5</h1>
+                    </div>
+                </div>
+
+                <div className="flex flex-row m-2 justify-center">
+                    <div className="inline-flex">
+                        <button>
+                            Roll
+                        </button>
                     </div>
                 </div>
 
